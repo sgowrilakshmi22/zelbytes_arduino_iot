@@ -1,0 +1,47 @@
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Arduino IDE temporary files
+*.tmp
+*.temp
+
+# Arduino build folders
+build/
+Build/
+Debug/
+Release/
+
+# VS Code
+.vscode/
+
+# JetBrains IDEs
+.idea/
+
+# Logs
+*.log
+
+# Backup files
+*.bak
+*.old
+*.orig
+
+# Compiled binaries
+*.hex
+*.elf
+*.bin
+
+# PlatformIO
+.pio/
+.pioenvs/
+
+# Python cache (if used for data analysis)
+__pycache__/
+*.pyc
+
+# Temporary CSV exports
+*.csv~
