@@ -1,0 +1,9 @@
+System Running
+PWM = 180
+
+Button Pressed
+
+E-STOP ACTIVATED
+Motor Stopped
+Valve Closed
+LED OFF
