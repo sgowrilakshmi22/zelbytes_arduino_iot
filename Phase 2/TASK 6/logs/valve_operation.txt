@@ -1,0 +1,91 @@
+
+========================================
+Valve Operation Test Log
+========================================
+
+Date: 15-06-2026
+Tester: S Gowrilakshmi
+
+Hardware:
+- Arduino Uno
+- 5V Relay Module
+- 12V Solenoid Valve
+- DC Motor Driver
+- Emergency Stop Push Button
+
+----------------------------------------
+Test 1: Valve Open Command
+----------------------------------------
+Action:
+Valve OPEN command issued.
+
+Expected Result:
+Relay energizes and valve opens.
+
+Observed Result:
+Relay activated successfully.
+Valve opened successfully.
+
+Status: PASS
+
+----------------------------------------
+Test 2: Valve Close Command
+----------------------------------------
+Action:
+Valve CLOSE command issued.
+
+Expected Result:
+Relay de-energizes and valve closes.
+
+Observed Result:
+Relay deactivated successfully.
+Valve closed successfully.
+
+Status: PASS
+
+----------------------------------------
+Test 3: Motor Running During Valve Operation
+----------------------------------------
+Action:
+Motor running at PWM = 180.
+Valve opened and closed repeatedly.
+
+Expected Result:
+Motor speed remains unchanged.
+
+Observed Result:
+Motor continued running normally.
+No interruption during valve operation.
+
+Status: PASS
+
+----------------------------------------
+Test 4: Emergency Stop Activation
+----------------------------------------
+Action:
+Motor running.
+Valve open.
+E-Stop button pressed.
+
+Expected Result:
+Motor stops immediately.
+Valve closes immediately.
+
+Observed Result:
+Motor stopped.
+Valve closed.
+LED turned OFF.
+Serial Monitor displayed:
+"E-STOP ACTIVATED"
+
+Status: PASS
+
+----------------------------------------
+Conclusion
+----------------------------------------
+Valve operation is independent of motor control.
+Emergency stop correctly shuts down both motor
+and valve for safe system operation.
+
+Overall Status: PASS
+========================================
