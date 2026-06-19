@@ -1,0 +1,124 @@
+# Calibration Data
+
+## Project
+
+Smart Irrigation System Using Arduino UNO and LM393 Soil Moisture Sensor
+
+## Objective
+
+To determine the dry and wet sensor values for converting raw analog readings into soil moisture percentages.
+
+---
+
+## Sensor Details
+
+Sensor Module : LM393 Soil Moisture Sensor Module
+
+Probe : YL-69 Soil Moisture Probe
+
+Arduino Pin : A0
+
+---
+
+## Calibration Procedure
+
+### Step 1: Air Reading
+
+The probe was kept in open air.
+
+### Observation
+
+```text
+Raw Sensor Value = 1023
+```
+
+---
+
+### Step 2: Dry Soil Reading
+
+The probe was inserted into dry soil.
+
+### Observation
+
+```text
+Raw Sensor Value = 850
+```
+
+---
+
+### Step 3: Wet Soil Reading
+
+The probe was inserted into wet soil.
+
+### Observation
+
+```text
+Raw Sensor Value = 250
+```
+
+---
+
+## Calibration Values Used
+
+```cpp
+const int DRY_VALUE = 850;
+const int WET_VALUE = 250;
+```
+
+---
+
+## Moisture Percentage Formula
+
+```cpp
+moisturePercent =
+map(sensorValue, DRY_VALUE, WET_VALUE, 0, 100);
+
+moisturePercent =
+constrain(moisturePercent, 0, 100);
+```
+
+---
+
+## Sample Results
+
+| Raw Value | Moisture Percentage | Condition         |
+| --------- | ------------------- | ----------------- |
+| 850       | 0%                  | Dry Soil          |
+| 700       | 25%                 | Slightly Dry      |
+| 550       | 50%                 | Moderate Moisture |
+| 400       | 75%                 | Moist Soil        |
+| 250       | 100%                | Wet Soil          |
+
+---
+
+## Irrigation Threshold
+
+```cpp
+const int MOISTURE_THRESHOLD = 30;
+```
+
+### Decision Logic
+
+| Moisture Percentage          | Action               |
+| ---------------------------- | -------------------- |
+| Less than 30%                | Relay ON, Valve ON   |
+| Greater than or Equal to 30% | Relay OFF, Valve OFF |
+
+---
+
+## Calibration Summary
+
+| Parameter            | Value      |
+| -------------------- | ---------- |
+| Air Reading          | 1023       |
+| Dry Soil Reading     | 850        |
+| Wet Soil Reading     | 250        |
+| Irrigation Threshold | 30%        |
+| Relay Type           | Active LOW |
+| Sensor Output Pin    | A0         |
+
+---
+
+## Conclusion
+
+The LM393 soil moisture sensor was successfully calibrated using dry and wet soil conditions. The obtained calibration values were used to convert raw sensor readings into soil moisture percentages, enabling reliable automatic irrigation control.

@@ -1,0 +1,144 @@
+# Irrigation Cycle Test Log
+
+## Project
+
+Smart Irrigation System Using Arduino UNO and Soil Moisture Sensor
+
+## Date
+
+---
+
+## Objective
+
+To verify the automatic operation of the irrigation system by monitoring soil moisture levels and controlling the relay, LED, and solenoid valve.
+
+---
+
+## Test 1: Dry Soil Condition
+
+### Input
+
+* Soil Moisture Sensor placed in dry soil
+* Sensor Reading: 780
+* Moisture Percentage: 12%
+
+### Expected Output
+
+* Relay ON
+* Solenoid Valve OPEN
+* LED ON
+
+### Serial Monitor Output
+
+```text
+Raw Value: 780 | Moisture: 12%
+SOIL DRY -> RELAY ON -> VALVE ON
+```
+
+### Result
+
+PASS ✓
+
+---
+
+## Test 2: Moist Soil Condition
+
+### Input
+
+* Soil Moisture Sensor placed in moist soil
+* Sensor Reading: 520
+* Moisture Percentage: 55%
+
+### Expected Output
+
+* Relay OFF
+* Solenoid Valve CLOSED
+* LED OFF
+
+### Serial Monitor Output
+
+```text
+Raw Value: 520 | Moisture: 55%
+SOIL WET -> RELAY OFF -> VALVE OFF
+```
+
+### Result
+
+PASS ✓
+
+---
+
+## Test 3: Wet Soil Condition
+
+### Input
+
+* Soil Moisture Sensor placed in wet soil
+* Sensor Reading: 300
+* Moisture Percentage: 91%
+
+### Expected Output
+
+* Relay OFF
+* Solenoid Valve CLOSED
+* LED OFF
+
+### Serial Monitor Output
+
+```text
+Raw Value: 300 | Moisture: 91%
+SOIL WET -> RELAY OFF -> VALVE OFF
+```
+
+### Result
+
+PASS ✓
+
+---
+
+## Test 4: Relay Verification
+
+### Procedure
+
+Observed relay module while changing soil conditions.
+
+### Observation
+
+* Relay energized when moisture percentage was below threshold.
+* Relay de-energized when moisture percentage exceeded threshold.
+
+### Result
+
+PASS ✓
+
+---
+
+## Test 5: Solenoid Valve Verification
+
+### Procedure
+
+Observed water flow through the valve.
+
+### Observation
+
+* Water flow started when soil became dry.
+* Water flow stopped when soil became wet.
+
+### Result
+
+PASS ✓
+
+---
+
+## Test Summary
+
+| Test Case              | Status |
+| ---------------------- | ------ |
+| Dry Soil Detection     | PASS   |
+| Moist Soil Detection   | PASS   |
+| Wet Soil Detection     | PASS   |
+| Relay Operation        | PASS   |
+| Solenoid Valve Control | PASS   |
+
+## Final Outcome
+
+The smart irrigation system successfully detected soil moisture levels and automatically controlled the relay, LED, and solenoid valve. The system supplied water when the soil was dry and stopped irrigation when sufficient moisture was detected.

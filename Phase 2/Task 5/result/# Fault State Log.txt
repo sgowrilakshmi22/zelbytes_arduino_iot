@@ -1,0 +1,136 @@
+# Fault State Log
+
+## Project
+
+Smart Irrigation System Using Arduino UNO and Soil Moisture Sensor
+
+## Date
+
+---
+
+## Objective
+
+To verify the system behavior during a fault condition and ensure that irrigation is disabled to prevent unintended operation.
+
+---
+
+## Fault Condition
+
+A fault state is triggered when the system detects an abnormal condition such as:
+
+* Sensor disconnection
+* Invalid sensor readings
+* Power interruption to sensor module
+* Hardware communication failure
+
+---
+
+## Test 1: Soil Sensor Disconnected
+
+### Procedure
+
+1. Power ON the system.
+2. Disconnect the soil moisture sensor from the Arduino.
+3. Observe Serial Monitor output.
+
+### Expected Output
+
+* Fault detected.
+* Relay OFF.
+* Solenoid Valve CLOSED.
+* LED OFF.
+* Irrigation disabled.
+
+### Serial Monitor Output
+
+```text
+FAULT DETECTED
+Sensor Reading Error
+
+Relay OFF
+Solenoid Valve OFF
+LED OFF
+
+System Waiting For Recovery...
+```
+
+### Result
+
+PASS ✓
+
+---
+
+## Test 2: Invalid Sensor Reading
+
+### Procedure
+
+1. Create an abnormal sensor condition.
+2. Observe system response.
+
+### Expected Output
+
+* System enters FAULT state.
+* Irrigation stops immediately.
+
+### Serial Monitor Output
+
+```text
+FAULT DETECTED
+Invalid Moisture Reading
+
+Relay OFF
+Solenoid Valve OFF
+LED OFF
+```
+
+### Result
+
+PASS ✓
+
+---
+
+## Test 3: Recovery Verification
+
+### Procedure
+
+1. Reconnect sensor properly.
+2. Reset Arduino.
+3. Observe operation.
+
+### Expected Output
+
+* System returns to normal monitoring mode.
+* Irrigation control restored.
+
+### Serial Monitor Output
+
+```text
+System Restarted
+
+Soil Value: 650
+Moisture: 33%
+
+Monitoring Active
+```
+
+### Result
+
+PASS ✓
+
+---
+
+## Fault State Summary
+
+| Parameter      | Status During Fault |
+| -------------- | ------------------- |
+| Soil Sensor    | Error/Disconnected  |
+| Relay          | OFF                 |
+| Solenoid Valve | OFF                 |
+| LED            | OFF                 |
+| Irrigation     | Disabled            |
+
+---
+
+## Final Observation
+
+The system successfully entered a safe fault condition when abnormal sensor behavior was detected. During the fault state, the relay remained OFF, the solenoid valve remained CLOSED, and irrigation was disabled, preventing unintended water flow. Normal operation was restored after correcting the fault and restarting the system.
