@@ -1,0 +1,4 @@
+PWM 50  -> Motor rotating slowly
+PWM 120 -> Motor rotating normally
+PWM 200 -> Motor rotating fast
+PWM 255 -> Maximum speed
